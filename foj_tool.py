@@ -4,15 +4,10 @@ FOJ Tool  -  Appointment Validator + No-Show Helper (one program, one set of exp
 =====================================================================================
 Replaces the "YCBM & FBM Comparison Sheet".  Run it and it produces:
 
-  1. appointment_sheet.csv    APPROVED appointments for ALL upcoming dates (import to Sheets): a banner
-                              row per date, times earliest -> latest, names A -> Z by last name.
-                              One-time no-show guests are approved with a "may not show up" note.
+  1. appointment_sheet.csv    APPROVED appointments for ALL upcoming dates
   2. decisions.csv            Every request in sections: DENY, APPROVE, REVIEW (reasons, corrected
                               FOJ_ID, what to do in YCBM).
-  3. warnings_and_penalties.csv  Checklist of guests who missed an appointment in a date range
-                              (default: past 7 days): ON PENALTY (2 months in a row), WARNING (1 no-show),
-                              or VERIFY FIRST (possible volunteer check-in mix-up). "Done" column:
-                              select it in Sheets -> Insert -> Checkbox.
+  3. warnings_and_penalties.csv 1 no show = warning, 2 no shows in a row = penalty (haven't discussed yet) 
   The no-show check works on its own: YCBM export + FBM visit export is all it needs
   (python3 foj_tool.py --only noshows).
 
@@ -52,7 +47,7 @@ USAGE
                                                        # overlapping exports are de-duplicated)
   python3 foj_tool.py --as-of 2026-11-07               # "today" (default: date in YCBM filename)
   python3 foj_tool.py --ignore-dates 2026-11-05        # drop these dates from visit evidence
-  python3 foj_tool.py --from 2026-10-31 --to 2026-11-06   # warnings/penalties range
+  python3 foj_tool.py --from 2026-10-31 --to 2026-11-06   # warnings/penalties range example 
   python3 foj_tool.py --only validate | --only noshows
   python3 foj_tool.py --undated-month 2026-10 old_list.csv  # use an undated list for one month
 
